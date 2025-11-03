@@ -85,6 +85,17 @@ pdfjsLib
 
         renderPage(pageNum)
     })
+    .catch(err => {
+
+        // Display error
+        const div = document.createElement('div');
+        div.className = 'error';
+        div.appendChild(document.createTextNode(err.message));
+        document.querySelector('body').insertBefore(div, canvas);
+
+        // Remove top bar
+        document.querySelector('.top-bar').style.display = 'none';
+    });
 
 // Button Events
 document.querySelector('#prev-page').addEventListener('click', showPrevPage);
